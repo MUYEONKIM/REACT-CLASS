@@ -56,6 +56,7 @@ export default function GraphqlMutationPage() {
             상세사항 : <input type="text" onChange={onChangeDetail}/><br/>
             가격 : <input type="text" onChange={onChangePrice}/><br/>
             <button style={{background: "red"}} onClick={onClickSubmit}>Graphql-API 요청하기</button>
+            <div></div>
         </div>
     )
 }
