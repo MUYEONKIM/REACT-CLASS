@@ -16,11 +16,11 @@ export default function App({ Component, pageProps }) {
 
   return (
     <div>
-      <div style={allStyle}>여기는 ============== _app.js 컴포넌트 시작 부분 입니다. ================</div>  
+      <div style={allStyle}>============== _app.js 컴포넌트 시작 부분 입니다. ================</div>  
       <ApolloProvider client={client}>
         <Component {...pageProps} />
       </ApolloProvider>
-      <div style={allStyle}>여기는 ============== _app.js 컴포넌트 마지막 부분 입니다. ================</div>  
+      <div style={allStyle}>============== _app.js 컴포넌트 마지막 부분 입니다. ================</div>  
     </div>
   )
 }
