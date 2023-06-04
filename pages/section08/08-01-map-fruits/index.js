@@ -12,6 +12,10 @@ const FRUITS = [
         {number: 10, title: "끝"},
 ];
 
+// map으로 리턴할 때 
+// 중괄호로 쓰면 return을 생략할 수 없고,
+// 소괄호로 쓰면 return 생략이 가능
+
 export default function mapFruitsPage() {
     // 1.가장 기본 예제
     const aaa = [<div>1 레드향</div>, <div>2 샤인머스켓</div>, <div>3 산청딸기</div>]
