@@ -13,6 +13,7 @@ const HIDDEN_HEADERS = [
     // ..
 ]
 
+
 interface iPropsLayout {
     children: JSX.Element;
 }
@@ -25,8 +26,6 @@ export default function Layout(props: iPropsLayout):JSX.Element {
     console.log("------------")
 
     const isHiddenHeader = HIDDEN_HEADERS.includes(router.asPath);
-
-
     return (
         <>
             {!isHiddenHeader && <LayoutHeader />}
