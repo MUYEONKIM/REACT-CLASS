@@ -6,6 +6,15 @@ export default function TestAPI() {
 
     useEffect(()=> {
         const fetchDog = async () => {
-            const result = await.axios.get()
+            const result = await axios.get("https://dog.ceo/api/breeds/image/random")
+            setDog(result.data.message)
+            console.log(result.data.message)
         }
-    })
+        fetchDog()
+    }, [])
+
+    return (
+        <div>
+            <img src={dog} />
+        </div>
+    )}
