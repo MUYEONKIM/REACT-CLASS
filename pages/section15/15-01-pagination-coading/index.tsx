@@ -29,7 +29,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
     
     // async를 graphql에서 쓰려면 promise로 지정해줘야 됨
 
-    //이렇게 함수 3개를 지정할것을 하나로 만들어줌
+    // 이렇게 함수 3개를 지정할것을 하나로 만들어줌
     // const onClickpage1 = (event : MouseEvent<HTMLSpanElement>): void => {
     //     void refetch({page:1})
     // };

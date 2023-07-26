@@ -4,9 +4,9 @@ export default function GraphqlMutationPage() {
 
     return (
         <div>
-            <div style={{color:"blue"}}>########## 여기는 페이지 입니다 ###########</div>
+            <div style={{color:"blue"}}>########## 여기는 페이지 그리고 난 베이직 입니다 ###########</div>
             <BoardWrite />
-            <div>########## 여기는 페이지 입니다 ###########</div>
+            <div>########## 여기는 페이지 그리고 난 베이직 입니다 ###########</div>
         </div>
     )
 }

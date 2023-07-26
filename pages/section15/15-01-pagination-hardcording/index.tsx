@@ -26,11 +26,11 @@ export default function StaticRoutingMovedPage(): JSX.Element {
     // 복습 mutation하고 렌더링을 다시하는게 아니라 바로 반영할때 refetch 쿼리 사용 즉onClick할때 삭제하고 바로 query만 다시 refetch해서 보여주는 것
     
     // async를 graphql에서 쓰려면 promise로 지정해줘야 됨
-    const onClickpage1 = async (): Promise<void> => {
-        void await refetch({page:1}) // 이렇게 await를 넣는건 보통 기다려서 받아온 뒤 밑에서 무언갈 실행할 때 넣어주는데 지금같은경우는 밑에 실행할것이 없으니 굳이 await를 안넣어주어도 됨
-        // refetch({ variables : }) 원래는 이런식으로 variables해서 받아오는데
-        console.log('a')
-    }
+    // const onClickpage1 = async (): Promise<void> => {
+    //     void await refetch({page:1}) // 이렇게 await를 넣는건 보통 기다려서 받아온 뒤 밑에서 무언갈 실행할 때 넣어주는데 지금같은경우는 밑에 실행할것이 없으니 굳이 await를 안넣어주어도 됨
+    //     // refetch({ variables : }) 원래는 이런식으로 variables해서 받아오는데
+    //     console.log('a')
+    // }
 
     const onClickpage2 = () : void => {
         void refetch({page:2})
@@ -51,7 +51,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
                     <span style = {{margin: "10px"}}>{el.title}</span> 
                     <span style = {{margin: "10px"}}>{el.contents}</span>
                 </div>))}
-                <span onClick={onClickpage1}>1</span> 
+                {/* <span onClick={onClickpage1}>1</span>  */}
                 <span onClick={onClickpage2}>2</span> 
                 <span onClick={onClickpage3}>3</span>
         </div>

@@ -6,5 +6,6 @@ export const RedInput = styled.input`
 
 export const BlueButton = styled.button`
     background-color: blue;
+    border-right-color: red;
     cursor: pointer;
 `
