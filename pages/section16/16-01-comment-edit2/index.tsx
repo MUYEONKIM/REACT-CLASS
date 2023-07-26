@@ -34,7 +34,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
         (FETCH_BOARDS); 
 
     const onClickEdit = (e: React.MouseEvent<HTMLButtonElement>): void => {
-      const qqq = myindex;
+      const qqq = [...myindex];
       qqq[Number(e.currentTarget.id)] = true;
       setMyindex(qqq);
       console.log(qqq)
