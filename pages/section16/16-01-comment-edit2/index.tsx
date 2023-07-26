@@ -15,7 +15,18 @@ const FETCH_BOARDS = gql`
 `
 
 export default function StaticRoutingMovedPage(): JSX.Element {
-    const [ myindex, setMyindex ] = useState(-1)
+    const [ myindex, setMyindex ] = useState([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ])
 
     const { data } = useQuery<
         Pick<IQuery, "fetchBoards">, 
@@ -23,12 +34,15 @@ export default function StaticRoutingMovedPage(): JSX.Element {
         (FETCH_BOARDS); 
 
     const onClickEdit = (e: React.MouseEvent<HTMLButtonElement>): void => {
-        setMyindex(Number(e.currentTarget.id))
+      const qqq = myindex;
+      qqq[Number(e.currentTarget.id)] = true;
+      setMyindex(qqq);
+      console.log(qqq)
     }
     return(
         <div>
             {data?.fetchBoards.map((el, index) => 
-                index !== myindex ? (
+                !myindex[index] ? (
                 <div key={el._id}>
                     <span>{index}</span>
                     <span style = {{margin: "10px"}}>{el.writer}</span>
