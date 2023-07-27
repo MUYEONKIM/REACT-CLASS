@@ -1,5 +1,8 @@
 import { Component } from 'react'
 
+interface State {
+  count: number;
+}
 export default class ClassCounterPage extends Component  {
   state = {
     count : 0,
@@ -7,7 +10,7 @@ export default class ClassCounterPage extends Component  {
   
 
   onClickCountUp = (): void => {
-    this.setState(prev => ({
+    this.setState((prev: State) => ({
       count: prev.count + 1,
     }));
   };
