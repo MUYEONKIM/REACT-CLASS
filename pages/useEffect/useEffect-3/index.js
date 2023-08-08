@@ -23,7 +23,7 @@ const MyDiv = styled.div`
     border: 3px solid red;
     color: gray;
     font-size: 50px;
-    margin-bottom: 30px;;
+    margin-bottom: 30px;
 `
 
 let num = 0 // let이 여기 있는거랑 밑의 함수 안에 있는 거랑 전혀 다름
