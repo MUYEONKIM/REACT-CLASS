@@ -31,7 +31,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
     }
 
     const onClickMove = ():void => {
-      router.push()
+      void router.push('/section22/22-01-fetch-policy-moved')
     }
     return(
         <div>
