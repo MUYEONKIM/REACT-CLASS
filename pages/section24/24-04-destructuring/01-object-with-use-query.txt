@@ -1,0 +1,49 @@
+const qq = {
+    a : 'bb',
+    b : 'cc',
+    c : 'dd',
+}
+
+const { a,b} = qq
+
+console.log(a)
+>> 'bb'
+console.log(b)
+>> 'cc'
+console.log(c)
+>> undefined
+
+
+const qq = {
+    a : 'bb',
+    b : 'cc',
+    c : 'dd',
+}
+
+const { a,b} = qq
+
+console.log(a)
+>> 'bb'
+console.log(b)
+>> 'cc'
+console.log(c)
+>> undefined
+
+
+function useQuery(qqq) {
+    return {
+        data : {fetchBoard: {writer: "철수"}},
+				refetch: () => {
+					console.log("리페치가 실행됩니다!!")
+				}
+    }
+}
+
+const {data, refetch } = useQuery("aaa")
+
+굳이 이렇게 안하고
+const result = useQuery("aaa")
+
+const data = result.data
+
+이렇게 해도 상관 없음

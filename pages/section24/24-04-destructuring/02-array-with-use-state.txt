@@ -1,0 +1,22 @@
+state를 보면
+
+const [ count, setCount ] = useState(0)으로 들어오는 것을
+보면 배열이라는 것을 알 수 있다
+
+function useState() {
+    let state = 초기값
+
+    const setState = (변경값) => {
+        console.log(`${state}에서 ${변경값}으로 값을 변경합니다`) // 1. state를 변경하기
+        console.log(`변경된 ${변경값}을 사용해서 컴포넌트를 리렌더링 하겠습니다!!`) // 2. 해당 컴포넌트를 리렌더링 시키기(render함수)
+    }
+    return [ state, setState ]
+}
+
+const [ count, setCount ] = useState(0)
+
+console.log(count)
+>> 0
+setCount(1)
+>> 0에서 1으로 값을 변경합니다
+>> 변경된 1을 사용해서 컴포넌트를 리렌더링 하겠습니다!!
