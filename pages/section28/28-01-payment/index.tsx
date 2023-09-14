@@ -33,7 +33,6 @@ export default function PaymentPage(): JSX.Element {
       }
     });
   };
-
   return (
     <>
       <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
