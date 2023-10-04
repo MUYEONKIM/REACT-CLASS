@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 // import { useEffect } from "react";
 import 'react-quill/dist/quill.snow.css';
 import { wrapFormAsyncFunc } from "../../../src/commons/libaries/asyncFunc";
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { gql, useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { IMutation, IMutationCreateBoardArgs } from "../../../src/commons/types/generated/typed";

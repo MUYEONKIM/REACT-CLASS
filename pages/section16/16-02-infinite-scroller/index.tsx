@@ -20,8 +20,8 @@ export default function StaticRoutingMovedPage(): JSX.Element {
     Pick<IQuery, "fetchBoards">, 
     IQueryFetchBoardsArgs>
     (FETCH_BOARDS); 
-  
-  const onloadMore = (): void => {
+
+    const onloadMore = (): void => {
     if(data === undefined) return;
     void fetchMore({
       variables: {
