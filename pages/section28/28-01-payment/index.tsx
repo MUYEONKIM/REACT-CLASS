@@ -8,7 +8,7 @@ export default function PaymentPage(): JSX.Element {
     IMP.init('imp06553467');
 
     IMP.request_pay({ // param
-      pg: "kakaopay",
+      pg: "kakaopay", // 어떤 pg사를 이용할 건지?
       pay_method: "card",
       // merchant_uid: "ORD20180131-0000011", 주문 번호는 겹치면 안되서 이렇게 할 경우 알아서 랜덤이 됨
       name: "키보드",
