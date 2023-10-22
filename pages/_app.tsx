@@ -7,7 +7,6 @@ import { globalStyles } from "../src/commons/styles/globalStyles";
 import { RecoilRoot } from 'recoil'
 export default function App({ Component }: AppProps): JSX.Element {
 
-
   return (
     <div>
       <div>============== _app.js 컴포넌트 시작 부분 입니다. ================</div>

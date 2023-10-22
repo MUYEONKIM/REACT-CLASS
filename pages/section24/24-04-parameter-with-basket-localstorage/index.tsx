@@ -41,7 +41,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
         baskets.push(newbasket);
 
         // 4. 추가된 장바구니 저장하기
-        localStorage.setItem('baskets', JSON.stringify(basket))
+        localStorage.setItem('baskets', JSON.stringify(baskets))
     }; 
 
     // 만약 장바구니 페이지에서 가져오기를 하려면?

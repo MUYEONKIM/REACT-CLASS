@@ -1,0 +1,114 @@
+<!-- `http://numbersapi.com/random?min=1&max=200` -->
+<!-- `https://koreanjson.com/posts/${num}` -->
+<!-- `https://koreanjson.com/posts?userId=${userId}` -->
+
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>콜백과 친구들</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    // function addEventListener(aaa, bbb) {
+    //   const res = 70;
+
+    //   if (aaa==="load") {
+    //     bbb(res);
+    //   };
+    // }
+
+    const myCallback = () => {
+      const aa = new XMLHttpRequest();
+      aa.open("get", `http://numbersapi.com/random?min=1&max=200`);
+      aa.send();
+      aa.addEventListener("load", (res) => {
+        const num = res.target.response.split(" ")[0];
+
+        const bb = new XMLHttpRequest();
+        bb.open("get", `https://koreanjson.com/posts/${num}`);
+        bb.send();
+        bb.addEventListener("load", (res) => {
+          const contents = res.target.response;
+          const userId = JSON.parse(contents).UserId;
+          console.log(userId)
+
+          const cc = new XMLHttpRequest();
+          cc.open("get", `https://koreanjson.com/posts?userId=${userId}`);
+          cc.send();
+          cc.addEventListener("load", (res) => console.log(res));
+        })
+      });
+    };
+
+    // new Promise((성공했을때실행시킬함수, 실패했을때실행시킬함수) => {
+    //   // 여기서 API요청을 한다면??
+    //   try {
+    //     const response = "철수" // 백엔드에서 "철수" 데이터를 받아왔다는 가정하에 
+    //     성공했을때실행시킬함수(response); // 성공하면 이거 실행
+    //   } catch(error) {
+    //     실패했을때실행시킬함수("실패했습니다"); // 실패하면 이거 실행
+    //   }
+    // }).then((qqq) => {
+    //   // 성공했을때실행시킬함수가 실행되고 난 후에 실행될 곳
+    //   console.log(qqq) // 위의 성공했을때 실행시킬 함수의 인자인 "철수" 가 출력됨
+    // }).catch((rrr) => {
+    //   // 실패했을때실행시킬함수가 실행되고 난 후에 실행될 곳
+    //   console.log(rrr) // "실패했습니다" 가 출력이 됨
+    // })
+
+    // const axios = {
+    //   get: () => {
+    //     return new Promise((성공시, 실패시) => { });
+    //   },
+    //   post: () => {
+    //     return new Promise((성공시, 실패시) => { });
+    //   }
+    // };
+
+    const myPromise = () => {
+      console.log("1번째로 실행됩니다");
+      axios
+        .get(`http://numbersapi.com/random?min=1&max=200`)
+        .then((res) => {
+          console.log("3번째로 실행됩니다");
+          const num = res.data.split(" ")[0]
+          return axios.get(`https://koreanjson.com/posts/${num}`);
+        })
+        .then((res) => {
+          console.log("4번째로 실행됩니다");
+          const userId = res.data.UserId
+          return axios.get(`https://koreanjson.com/posts?userId=${userId}`)
+        })
+        .then((res) => {
+          console.log("5번째로 실행됩니다");
+          console.log(res.data)
+        });
+      console.log("2번째로 실행됩니다");
+
+    };
+
+    // axios, fetch 등 => 대표적인 Promise를 지원하는 기능
+
+    const myAsyncAwait = async () => {
+      const res = await axios.get(`http://numbersapi.com/random?min=1&max=200`)
+      const num = res.data.split(" ")[0]
+      const res2 = await axios.get(`https://koreanjson.com/posts/${num}`);
+      const userId = res2.data.UserId
+      const res3 = await axios.get(`https://koreanjson.com/posts?userId=${userId}`)
+      console.log(res3.data)
+    };
+  </script>
+</head>
+
+<body>
+  <button onclick="myCallback()">callback 연습하기</button>
+  <button onclick="myPromise()">promise 연습하기</button>
+  <button onclick="myAsyncAwait()">async/await 연습하기</button>
+  <p>JSX에서는 HTML로 자동 변환 되서 onClick에 함수 바인딩을 해주지 않아도 자동으로 변환이 되지만, 일반적인 html에서는 함수 뒤에 ()바인딩을 넣어줘야 함</p>
+  <p>실습 내용</p>
+  <p>1. 랜덤한 숫자 받아오기 (1~200)</p>
+  <p>2. 랜덤한 숫자 번의 게시글 조회</p>
+  <p>3. 작성자가 작성한 다른 글들 조회하기</p>
+</body>
+
+</html>
