@@ -1,16 +1,25 @@
-import { atom } from "recoil";
+import { atom, selector } from "recoil";
+import { getAccessToken } from "../libaries/getAccessToken";
 
 export const isEditState = atom({
-  key: "isEditState",
-  default: true,
+    key: "isEditState",
+    default: true,
 });
 
 export const accessTokenState = atom({
-  key: "accessTokenState",
-  default: "",
+    key: "accessTokenState",
+    default: "",
 });
 
 export const visitedPageState = atom({
-  key: "visitedPageState",
-  default: "",
-})
+    key: "visitedPageState",
+    default: "",
+});
+
+export const restoreAccessTokenLoadable = selector({
+    key: "restoreAccessTokenLoadable",
+    get: async () => {
+        const newAccessToken = await getAccessToken();
+        return newAccessToken;
+    },
+});
