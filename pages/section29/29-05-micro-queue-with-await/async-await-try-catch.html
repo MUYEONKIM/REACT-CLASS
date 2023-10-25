@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <title>eventloop</title>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    const onClickLoop = () => {
+      const aaa = () => {
+        try {
+          axios.get("https://qqqq.com")
+        } catch (error) {
+          console.log("에러가 발생하였습니다")
+        };
+      };
+      aaa();
+
+      const bbb = () => {
+        try {
+          axios.get("https://qqqq.com")
+        } catch (error) {
+          console.log("에러가 발생하였습니다")
+        };
+      };
+      bbb();
+    };
+  </script>
+</head>
+
+<body>
+  <button onclick="onClickLoop()">시작하기</button>
+</body>
+
+</html>
