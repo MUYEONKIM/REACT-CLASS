@@ -37,7 +37,8 @@
     "slick-carousel": "^1.8.1",
     "ts-node": "^10.9.1",
     "uuid": "^9.0.0",
-    "yup": "^1.2.0"
+    "yup": "^1.2.0",
+    "zen-observable": "^0.10.0"
   },
   "devDependencies": {
     "@graphql-codegen/cli": "^2.16.4",
@@ -49,6 +50,7 @@
     "@types/react-infinite-scroller": "^1.2.3",
     "@types/react-slick": "^0.23.10",
     "@types/uuid": "^9.0.2",
+    "@types/zen-observable": "^0.8.5",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
