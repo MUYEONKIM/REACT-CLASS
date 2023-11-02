@@ -48,7 +48,7 @@ export const getServerSideProps = async (): Promise<any> => {
     const graphQLclient = new GraphQLClient(
         "https://backend-practice.codebootcamp.co.kr/graphql"
     );
-    const result = await graphQLclient.request(FETCH_USEDITEM, {
+    const result: any = await graphQLclient.request(FETCH_USEDITEM, {
         useditemId: "644f6404aef9f000281ba9da",
     });
 
