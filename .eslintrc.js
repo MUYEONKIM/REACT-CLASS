@@ -1,7 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    es2021: true
+    es2021: true,
+    jest: true
   },
   extends: [
     'standard-with-typescript',
@@ -20,6 +21,6 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/consistent-type-imports': 'off',
     'react/display-name': 'off',
-    '@typescript-eslint/naming-convention' : 'off',
+    '@typescript-eslint/naming-convention': 'off',
   }
 }
