@@ -1,6 +1,7 @@
 import { graphql } from "msw";
 
 const gql = graphql.link("http://mock.com/graphql")
+// const server = graphql.link("http://mock.com/graphql");
 
 // test에서 사용할 미니 백엔드 서버
 // request, response, ctx(헤더같은것) 으로 콜백 함수에 들어옴
