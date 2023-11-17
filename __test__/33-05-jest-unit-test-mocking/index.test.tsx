@@ -31,10 +31,11 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 it("게시글이 잘 등록되는지 테스트 하자!", async () => {
     const client = new ApolloClient({
-        link: new HttpLink({
-            uri: "http://mock.com/graphql",
-            fetch,
-        }),
+        // link: new HttpLink({
+        //     uri: "http://mock.com/graphql",
+        //     fetch,
+        // }),
+        link: new HttpLink({ uri: "http://mock.com/graphql", fetch }),
         cache: new InMemoryCache(),
     });
 
