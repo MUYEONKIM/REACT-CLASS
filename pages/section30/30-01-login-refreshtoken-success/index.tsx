@@ -1,6 +1,8 @@
-import { gql, useApolloClient } from "@apollo/client";
+import { gql, useApolloClient, useMutation } from "@apollo/client";
 // import { IQuery } from "../../../src/commons/types/generated/typed";
 import { wrapAsyncFunc } from "../../../src/commons/libaries/asyncFunc";
+import { withAuth } from "../../../src/components/commons/hocs/withAuth";
+import { useRouter } from "next/router";
 
 const FETCH_USER_LOGGED_IN = gql`
     query {
@@ -12,7 +14,14 @@ const FETCH_USER_LOGGED_IN = gql`
     }
 `;
 
-export default function LoginSuccessPage(): JSX.Element {
+const LOGOUT_USER = gql`
+    mutation logoutUser {
+        logoutUser
+    }
+`;
+
+const LoginSuccessPage = (): JSX.Element => {
+    const router = useRouter();
     // 1. 페이지 접속하면 자동으로 데이터 받아오는 법(data는 글로벌스테이트 저장)이 되고 리렌더링이 됨
     // const { data } =
     // useQuery<Pick<IQuery, "fetchUserLoggedIn">>(FETCH_USER_LOGGED_IN);
@@ -29,6 +38,7 @@ export default function LoginSuccessPage(): JSX.Element {
     // const client = useApolloClient();
     // client.query()
 
+    const [logoutUser] = useMutation(LOGOUT_USER);
     const client = useApolloClient();
 
     const onClickButton = async (): Promise<void> => {
@@ -37,11 +47,19 @@ export default function LoginSuccessPage(): JSX.Element {
         });
         console.log(result);
     };
+
+    const onClickLogout = (): void => {
+        void logoutUser();
+        void router.push("/section30/30-01-login-refreshtoken");
+    };
     return (
         <>
             로그인에 성공하였습니다.
             {/* {data?.fetchUserLoggedIn.name}님 환영합니다. */}
             <button onClick={wrapAsyncFunc(onClickButton)}>클릭하세요</button>
+            <button onClick={onClickLogout}>로그아웃</button>
         </>
     );
-}
+};
+
+export default withAuth(LoginSuccessPage);
