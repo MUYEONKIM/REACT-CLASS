@@ -2,6 +2,7 @@ import { gql, useMutation } from "@apollo/client";
 import type { ChangeEvent } from "react";
 import type {
     IMutation,
+    IMutationLoginUserArgs,
     IMutationLoginUserExampleArgs,
 } from "../../../src/commons/types/generated/typed";
 import { useState } from "react";
@@ -11,8 +12,8 @@ import { useRouter } from "next/router";
 import { wrapAsyncFunc } from "../../../src/commons/libaries/asyncFunc";
 
 const LOGIN_USER = gql`
-    mutation loginUserExample($email: String!, $password: String!) {
-        loginUserExample(email: $email, password: $password) {
+    mutation loginUser($email: String!, $password: String!) {
+        loginUser(email: $email, password: $password) {
             accessToken
         }
     }
@@ -22,9 +23,9 @@ export default function LoginPage(): JSX.Element {
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [loginUserExample] = useMutation<
-        Pick<IMutation, "loginUserExample">,
-        IMutationLoginUserExampleArgs
+    const [loginUser] = useMutation<
+        Pick<IMutation, "loginUser">,
+        IMutationLoginUserArgs
     >(LOGIN_USER);
 
     // 이렇게 state를 안쓰면 지워도 가능 대신 ,는 지우면 안됨 (구조할당 때문에)
@@ -41,13 +42,13 @@ export default function LoginPage(): JSX.Element {
     const onClickLogin = async (): Promise<void> => {
         try {
             // 1. login Mutation날려서 accesstoken 받아오기
-            const result = await loginUserExample({
+            const result = await loginUser({
                 variables: {
                     email,
                     password,
                 },
             });
-            const accessToken = result.data?.loginUserExample.accessToken;
+            const accessToken = result.data?.loginUser.accessToken;
 
             // 2. 받아온 accessToken을 global state에 저장하기
             if (accessToken === undefined) {
