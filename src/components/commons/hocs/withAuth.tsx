@@ -30,10 +30,13 @@ export const withAuth =
 
         // 3. refreshToken 좋음 => 함수를 공유하므로 apollo에 이어 1번만 요청하게 됨
         useEffect(() => {
+            console.log("withauth가 실행되었습니다");
             void aaa.toPromise().then((newAccessToken) => {
+                console.log(newAccessToken, "withauth결과입니다");
+                console.log(aaa);
                 if (newAccessToken === undefined) {
                     alert("로그인 후 이용가능합니다.");
-                    void router.push("/section23/23-05-login-check-hoc");
+                    void router.push("/section30/30-01-login-refreshtoken");
                 }
             });
         }, []);
