@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import styled from '@emotion/styled'
+import { useRouter } from 'next/router'
 
 
 const Mydiv = styled.div`
@@ -27,7 +28,9 @@ const MyDiv = styled.div`
 `
 
 let num = 0 // let이 여기 있는거랑 밑의 함수 안에 있는 거랑 전혀 다름
+
 export default function useEffectPage() {
+    const router = useRouter();
     let num2 = 0
     const [text, setText] = useState('');
     const [message, setMessage] = useState('')
@@ -41,12 +44,13 @@ export default function useEffectPage() {
 
     useEffect(() => {
         console.log("렌더링이 완료될때 실행" + num2++ + num++); // 렌더링 (무조건 처음에 한 번 실행되는 것)
-        return () => {  //렌더링만 한번 실행시키고 그 후 return을 먼저 실행시켜주고 위의 console.log를 실행시킴
+        return () => {  // 렌더링만 한번 실행시키고 그 후 return을 먼저 실행시켜주고 위의 console.log를 실행시킴
             console.log("cleanup")
         }
-    })
+    }, [])
     return (
         <Mydiv>
+            <button onClick={() => router.push("/")}>ddd</button>
             <MyInput onChange={onChangeInput}></MyInput>
             <MyDiv>{text}</MyDiv>
             <MyInput onChange={onChangeInput2}></MyInput>
