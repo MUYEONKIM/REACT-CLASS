@@ -20,6 +20,7 @@ export const restoreAccessTokenLoadable = selector({
     key: "restoreAccessTokenLoadable",
     get: async () => {
         const newAccessToken = await getAccessToken();
+        console.log(newAccessToken, "restoreaccess 결과입니다");
         return newAccessToken;
     },
 });
